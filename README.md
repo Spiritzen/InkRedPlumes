@@ -11,11 +11,11 @@ Ce projet consiste à créer une **plateforme web complète** de vente et gestio
 
 | Côté         | Stack principale                           |
 |--------------|--------------------------------------------|
-| Base de données | MySQL / MariaDB                         |
-| Backend       | Java JEE (ou Spring Boot), JDBC / DAO     |
-| Frontend      | ReactJS, Axios                            |
+| Base de données |  MariaDB                                |
+| Backend       | Spring Boot                               |
+| Frontend      | ReactJS,  Vite                            |
 | Outils        | HeidiSQL, Git, Postman, Figma             |
-| Déploiement   | Docker (optionnel), hébergement LWS       |
+| Déploiement   | hébergement LWS                           |
 
 ---
 
@@ -24,8 +24,8 @@ Ce projet consiste à créer une **plateforme web complète** de vente et gestio
 ```bash
 RedInkPlums/
 ├── requete_sql/        # Scripts SQL (tables, vues, procédures, triggers, index, tests)
-├── backend/            # Backend Java JEE ou Spring Boot (API REST à venir)
-├── frontend/           # Application ReactJS (interface utilisateur à venir)
+├── backend/            # Backend Spring Boot 
+├── frontend/           # Application ReactJS 
 ├── backup/             # Sauvegardes SQL (.sql)
 └── README.md           # Ce fichier
 ```
