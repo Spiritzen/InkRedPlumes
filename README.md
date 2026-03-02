@@ -3,6 +3,10 @@
 
 Bienvenue dans le dépôt officiel du projet **Ink Red Plumes**, développé dans le cadre de la formation **Concepteur Développeur d'Applications (CDA)** à l’AFCI.
 
+<p align="center">
+  <img src="assets/irpPreview.jpg" width="950"/>
+</p>
+
 Ce projet consiste à créer une **plateforme web complète** de vente et gestion de livres numériques. Il propose des fonctionnalités pour trois profils principaux d’utilisateurs : **lecteurs (clients)**, **auteurs**, et **administrateurs**.
 
 ---
