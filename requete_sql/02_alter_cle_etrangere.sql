@@ -27,4 +27,26 @@ FOREIGN KEY (commandeId) REFERENCES commande(idCommande);
 ALTER TABLE ligne_de_commande
 ADD CONSTRAINT fk_ldc_produit
 FOREIGN KEY (produitId) REFERENCES produit(idProduit);
-commande
+
+ALTER TABLE ligne_de_commande_livre
+ADD CONSTRAINT fk_ldc_livre_commande
+FOREIGN KEY (commandeId) REFERENCES commande(idCommande);
+
+ALTER TABLE ligne_de_commande_livre
+ADD CONSTRAINT fk_ldc_livre_livre
+FOREIGN KEY (livreId) REFERENCES livre(idLivre);
+
+ALTER TABLE commande
+ADD COLUMN statut VARCHAR(30) NOT NULL DEFAULT 'en_attente';
+
+ALTER TABLE commande
+ADD CONSTRAINT check_statut_commande
+CHECK (statut IN (
+  'en_attente',
+  'payee',
+  'en_cours_de_traitement',
+  'expediee',
+  'terminee',
+  'en_attente_de_preparation',
+  'annulee'
+));

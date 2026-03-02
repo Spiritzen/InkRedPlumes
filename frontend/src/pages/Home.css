@@ -1,0 +1,345 @@
+.home-page {
+   font-family: "Gabriela", serif;
+  font-style: normal;
+  color: #fff;
+  background-color: #111;
+  background-image: url('/images/filigrane_elfique7.png');
+  background-repeat: repeat;
+  background-size: 1300px auto;
+  background-position: center 0px; /* on va animer cette valeur */
+  transition: background-position 0.05s ease-out;
+  overflow-x: hidden;
+}
+
+
+
+/* 🎬 Section Vidéo */
+.hero-video {
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+    box-shadow: 0 0 40px rgba(255, 221, 27, 0.25);
+}
+
+.video-background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background: rgba(0, 0, 0, 0.25); /* fond semi-transparent */
+  padding: 2rem;
+  border-radius: 1rem;
+  color: #fff;
+  backdrop-filter: blur(5px);       /* 💫 effet de flou */
+  -webkit-backdrop-filter: blur(5px); /* ✅ support Safari */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* optionnel : halo doux */
+}
+
+.overlay-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.overlay-text p {
+  font-size: 1.5rem;
+}
+
+.inkred-text {
+  color: #ff4c4c; /* Fallback : joli rouge si gradient non supporté */
+  background: linear-gradient(to top, #8b0000, #ff4c4c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.plumes-gold {
+  font-family: 'Great Vibes', cursive !important;
+  background: linear-gradient(to top, #b8860b, #fff8dc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  font-weight: bold;
+}
+
+/* 📚 Section Livres */
+.featured-books,
+.site-info {
+  padding: 1rem 2rem;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.featured-books h2,
+.site-info h2,
+.testimonials h2 {
+  color:rgb(209, 195, 1);
+
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  text-decoration: underline;
+}
+.testimonials {
+  padding: 4rem 2rem 1rem 2rem; /* ⬅️ padding-bottom réduit à 1rem */
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-size: 2rem;
+  margin-bottom: 0.01rem; /* tu peux même le réduire à 0.5rem si besoin */
+}
+
+.book-carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #222;
+  border-radius: 1rem;
+  padding: 2rem;
+  min-height: 150px;
+}
+
+.site-info p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+.about-container-limited {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 100px;
+  width: 100%;
+  overflow: hidden; /* 🔒 pour que les coins soient nets même si l'image déborde */
+  border-radius: 1rem; /* ✅ coins arrondis (16px env.) */
+   box-shadow: 0 0 15px 15px rgba(255, 218, 6, 0.10);
+}
+
+.about-image-limited {
+  flex: 1;
+  background-image: url('/images/About_image2.png');
+  background-size: cover;
+  background-position: center;
+  min-height: 400px;
+}
+
+.about-text {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.2); /* fond noir semi-transparent */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 3rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.about-text p {
+  margin-bottom: 1.2rem; /* ✅ espace entre chaque paragraphe */
+  line-height: 1.6;       /* ✅ confort de lecture */
+}
+
+
+/* Responsive */
+@media (max-width: 1540px) {
+  .overlay-text h1 {
+    font-size: 2.6rem;
+  }
+
+  .overlay-text p {
+    font-size: 1.3rem;
+  }
+
+  .overlay-text {
+    padding: 1.8rem;
+  }
+}
+@media (max-width: 1340px) {
+  .overlay-text h1 {
+    font-size: 2.3rem;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .overlay-text p {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  .overlay-text {
+    padding: 1.6rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1235px) {
+  .overlay-text h1 {
+    font-size: 2rem;
+    line-height: 1.3;
+    text-align: center;
+  }
+
+  .overlay-text p {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .overlay-text {
+    padding: 1.4rem;
+    max-width: 95%;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 850px) {
+    .hero-video {
+
+  height: 75vh;
+ 
+}
+  .overlay-text h1 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .overlay-text p {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 0.5rem;
+  }
+
+  .overlay-text {
+    min-width: 75%;
+    padding: 1rem 1.2rem;
+    text-align: center;
+  }
+}
+@media (max-width: 615px) {
+  .hero-video {
+
+  height: 75vh;
+ 
+}
+  .overlay-text {
+    min-width: 75%;
+    padding: 1rem 1.2rem;
+    text-align: center;
+  }
+    .about-text p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .overlay-text h1 {
+    font-size: 1.4rem;
+    line-height: 1.4;
+    margin-bottom: 0.6rem;
+  }
+
+  .overlay-text p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 auto;
+    max-width: 90%;
+  }
+
+      .featured-books h2,
+.site-info h2,
+.testimonials h2 {
+
+
+  font-size: 1.1rem;
+  margin-bottom: 0.2rem;
+  
+}
+
+  }
+
+@media (max-width:500px) {
+  .featured-books h2,
+.site-info h2,
+.testimonials h2 {
+ 
+
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  text-decoration: underline;
+}
+  .about-container-limited {
+
+    display: flex;
+ max-width: 350px;
+  box-shadow: 0 0 10px 5px rgba(255, 218, 6, 0.10);
+  
+    
+  
+  }
+
+
+  .about-text {
+  
+  background: rgba(0, 0, 0, 0.2); /* fond noir semi-transparent */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  padding: 0.2rem;
+  color: #fff;
+  font-size:0.8em;
+ 
+  flex-direction: column;
+  justify-content: center;
+  
+}
+
+.full-width-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: #fdfdf7; /* ou beige clair, à ton goût */
+}
+
+.site-info-bg {
+  color: #111;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+.site-info-bg {
+  background-color: #fdfdf7; /* gris clair doux, presque beige */
+  color: #111;
+  padding: 4rem 2rem;
+  width: 100%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* 🗣️ Témoignages */
+.testimonial-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* 🔗 Footer */
+.site-footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #222;
+  color: #aaa;
+  margin-top: 3rem;
+}
+}

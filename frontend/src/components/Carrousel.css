@@ -1,0 +1,219 @@
+.carrousel-container {
+  display: flex;
+  width: 100%;
+}
+
+.custom-swiper {
+  padding-bottom: 3rem;
+}
+
+.carrousel-card {
+  position: relative;
+  overflow: visible;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 40px 0;
+}
+
+.carrousel-card-inner {
+  position: relative;
+  display: inline-block;
+}
+
+.carrousel-image {
+  width: 198px;
+  height: 284px;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 0 0 transparent;
+  transform-origin: center;
+}
+
+.carrousel-card:hover .carrousel-image {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px 4px rgba(255, 215, 0, 0.2);
+  z-index: 2;
+}
+
+.carrousel-title {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-origin: center;
+  width: 220px;
+  background: rgba(0, 0, 0, 0.65);
+  color: gold;
+  font-weight: bold;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  word-break: break-word;
+  z-index: 1;
+  transition: transform 0.4s ease, font-size 0.4s ease;
+}
+
+.carrousel-card:hover .carrousel-title {
+  transform: translateX(-50%) scale(1.08);
+  font-size: 1.05rem;
+}
+
+/* ===== Modale du carrousel ===== */
+.carrousel-modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  overflow-y: auto;
+  z-index: 6000; /* > toutes les autres modales */
+}
+
+.carrousel-modal-content {
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+/* image centrée et bien posée */
+.carrousel-modal-content img {
+  display: block;
+  margin: 0 auto 1rem auto;
+  width: 180px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.carrousel-modal-content h3 {
+  color: gold;
+  margin-bottom: 0.5rem;
+}
+
+.carrousel-modal-content p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.carrousel-modal-price {
+  font-weight: bold;
+  color: #f2c94c;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.carrousel-modal-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.carrousel-more-btn {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  background: linear-gradient(to right, #d4af37, #ffd700);
+  color: #000;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.carrousel-more-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to right, #e4c04a, #e4d168);
+}
+
+.carrousel-exit-btn {
+  background: linear-gradient(to right, #d63031, #e17055);
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.carrousel-exit-btn:hover {
+  background: linear-gradient(to right, #e74c3c, #ff7675);
+  transform: scale(1.05);
+}
+
+/* Flèches Swiper */
+.swiper-button-prev,
+.swiper-button-next {
+  color: rgba(255, 215, 0, 0.5) !important;
+  font-size: 1.6rem;
+  font-weight: bold;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: rgba(255, 215, 0, 0.9);
+  transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive */
+@media (max-width: 850px) {
+  .carrousel-image {
+    width: 160px;
+    height: 230px;
+  }
+  .carrousel-title {
+    width: 160px;
+    font-size: 0.85rem;
+  }
+  .carrousel-modal-content {
+    padding: 1rem;
+    max-width: 90vw;
+    max-height: 85vh;
+  }
+  .carrousel-modal-content img {
+    width: 140px;
+  }
+}
+
+@media (max-width: 580px) {
+  .carrousel-image {
+    width: 120px;
+    height: 170px;
+  }
+  .carrousel-title {
+    width: 120px;
+    font-size: 0.75rem;
+  }
+  .carrousel-title:hover {
+    width: 120px;
+    font-size: 0.85rem;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none;
+  }
+}

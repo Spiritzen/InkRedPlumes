@@ -18,6 +18,7 @@ CREATE TABLE livre (
    resume VARCHAR(600),
    prix DECIMAL(10,2) NOT NULL,
    dateParution DATE NOT NULL,
+   imagePath VARCHAR(255),
    auteurId INT NOT NULL
 );
 
@@ -48,6 +49,13 @@ CREATE TABLE ligne_de_commande (
    idLigne INT AUTO_INCREMENT PRIMARY KEY,
    commandeId INT NOT NULL,
    produitId INT NOT NULL,
+   quantite INT NOT NULL,
+   prixUnitaire DECIMAL(10,2) NOT NULL
+);
+CREATE TABLE ligne_de_commande_livre (
+   idLigneLivre INT AUTO_INCREMENT PRIMARY KEY,
+   commandeId INT NOT NULL,
+   livreId INT NOT NULL,
    quantite INT NOT NULL,
    prixUnitaire DECIMAL(10,2) NOT NULL
 );

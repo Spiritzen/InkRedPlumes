@@ -63,3 +63,17 @@ SELECT p.nomProduit, SUM(ldc.quantite * ldc.prixUnitaire) AS chiffreAffaires
 FROM produit p
 JOIN ligne_de_commande ldc ON p.idProduit = ldc.produitId
 GROUP BY p.idProduit;
+
+CREATE OR REPLACE VIEW vue_stats_livres AS
+SELECT
+    l.idLivre,
+    l.titre,
+    l.prix,
+    l.imagePath,
+    l.auteurId,
+    COALESCE(SUM(ldcl.quantite), 0) AS nombreVentes,
+    ROUND(AVG(c.note), 1) AS moyenneNote
+FROM livre l
+LEFT JOIN ligne_de_commande_livre ldcl ON ldcl.livreId = l.idLivre
+LEFT JOIN comments c ON c.livreId = l.idLivre
+GROUP BY l.idLivre;vue_utilisateurs

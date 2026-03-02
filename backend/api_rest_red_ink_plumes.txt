@@ -1,0 +1,57 @@
+# API REST - Projet Ink Red Plumes
+
+Ce fichier retrace la mise en place complète de l'API REST du projet Ink Red Plumes avec Spring Boot.
+
+---
+
+## Étapes réalisées
+
+### 🔹 1. Mise en place de la base de données (MariaDB)
+- Script `01_create_bdd_table.sql` avec les tables suivantes :
+  - `user`, `livre`, `comments`, `commande`, `produit`, `ligne_de_commande`, `ligne_de_commande_livre`
+- Ajout de `imagePath` dans `livre`
+
+### 🔹 2. Modélisation des entités JPA
+- Création des modèles Java (`@Entity`) pour chaque table, en respectant le mapping des colonnes.
+- Exclusion des relations `@ManyToOne`/`@OneToMany`, utilisation des `Integer` pour les foreign keys.
+
+### 🔹 3. Création des Repository (JpaRepository)
+- Un repository par entité : `UserRepository`, `LivreRepository`, `CommentsRepository`, etc.
+
+### 🔹 4. Création des Controller REST
+- Endpoints CRUD créés pour :
+  - `/api/users`
+  - `/api/livres`
+  - `/api/comments`
+  - `/api/commandes`
+  - `/api/produits`
+  - `/api/ligne-de-commande`
+  - `/api/ligne-de-commande-livre`
+
+### 🔹 5. Tests API avec Postman
+- Envoi de requêtes HTTP (`GET`, `POST`, `PUT`, `DELETE`) via Postman
+- Headers configurés, authentification testée
+
+### 🔹 6. Ajout de Spring Security + JWT
+- Configuration complète :
+  - `SecurityConfig.java`
+  - `JwtUtil.java` (génération et validation de tokens)
+  - `CustomUserDetailsService.java`
+  - `JwtFilter.java`
+  - `AuthController.java` pour `/auth/login`
+- Permissions selon les rôles (`admin`, `author`, `client`)
+
+### 🔹 7. Données tests injectées
+- Utilisateurs fictifs (`admin`, `author`, `client`)
+- Livres, produits, commandes, commentaires
+- Token JWT généré et testé
+
+---
+
+## Résultat final
+- API REST sécurisée, fonctionnelle, documentée
+- Prête à être consommée par une interface React
+
+---
+
+Ce backend constitue la fondation du projet Ink Red Plumes.

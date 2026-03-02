@@ -1,0 +1,395 @@
+:root {
+    --btn-size: 56px;
+      --item-scale: 0.8; /* ✅ ratio items / bouton */
+    --extra-space: 24px;
+     --ring-scale: 1; /* ✅ nouveau : 1 = distance normale */
+    --transition-speed: 0.4s;
+    --primary: #4361ee;
+    --secondary: #3a0ca3;
+    --accent: #f72585;
+    --light: #f8f9fa;
+    --dark: #212529;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    --shadow-active: 0 16px 24px rgba(0, 0, 0, 0.2);
+}
+
+
+.searchbar {
+  position: fixed;
+  top: 4.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.searchbar-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: contain;
+  z-index: 0;
+  pointer-events: none; /* permet de cliquer sur input et menu */
+}
+/* input parfaitement positionné dans la zone blanche */
+.search-input {
+  position: relative;
+  z-index: 1;
+  width: 65%;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  padding: 0 20px;
+  font-size: 1rem;
+  background-color: rgba(255, 255, 255,0);
+  color: var(--dark);
+  /*box-shadow: var(--shadow);*/
+  outline: none;
+}
+
+/* repositionne le menu radial dans le rond droit */
+.menu {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: var(--btn-size);
+  height: var(--btn-size);
+}
+
+
+.menu-toggle {
+    position: absolute;
+    width: var(--btn-size);
+    height: var(--btn-size);
+    border-radius: 50%;
+    background: var(--primary);
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5em;
+    box-shadow: var(--shadow);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform:scale(0.8); /* ✅ au cas où tu veuilles gérer l’échelle aussi ici plus tard */
+}
+
+.menu-toggle:hover {
+    background: var(--secondary);
+    transform: scale(0.9);
+    box-shadow: var(--shadow-hover);
+}
+
+.menu-items {
+    position: absolute;
+    top: 0;
+    left: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: var(--btn-size);
+    height: var(--btn-size);
+}
+
+.item {
+  position: absolute;
+  width: calc(var(--btn-size) * var(--item-scale));
+  height: calc(var(--btn-size) * var(--item-scale));
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all var(--transition-speed) cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  transform: translate(0, 0) rotate(45deg);
+  opacity: 0;
+  pointer-events: none;
+}
+.menu.open .item {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.menu.open .item.login,
+.menu.open .item.logout {
+  transform: translate(
+    0,
+    calc(-1 * (var(--btn-size) + var(--extra-space)) * var(--ring-scale))
+  ) rotate(0deg);
+  transition-delay: 0s;
+}
+
+.menu.open .item:nth-child(2) {
+  transform: translate(
+    calc((var(--btn-size) + var(--extra-space)) * 0.707 * var(--ring-scale)),
+    calc(-1 * (var(--btn-size) + var(--extra-space)) * 0.707 * var(--ring-scale))
+  ) rotate(0deg);
+  transition-delay: 0.1s;
+}
+
+.menu.open .item:nth-child(3) {
+  transform: translate(
+    calc((var(--btn-size) + var(--extra-space)) * var(--ring-scale)),
+    0
+  ) rotate(0deg);
+  background: linear-gradient(135deg, #4cc9f0 0%, #4895ef 100%);
+  transition-delay: 0.2s;
+}
+
+.menu.open .item:nth-child(4) {
+  transform: translate(
+    calc((var(--btn-size) + var(--extra-space)) * 0.707 * var(--ring-scale)),
+    calc((var(--btn-size) + var(--extra-space)) * 0.707 * var(--ring-scale))
+  ) rotate(0deg);
+  background: linear-gradient(135deg, #7209b7 0%, #560bad 100%);
+  transition-delay: 0.3s;
+}
+
+.menu.open .item:nth-child(5) {
+  transform: translate(
+    0,
+    calc((var(--btn-size) + var(--extra-space)) * var(--ring-scale))
+  ) rotate(0deg);
+  background: linear-gradient(135deg, #3a0ca3 0%, #480ca8 100%);
+  transition-delay: 0.4s;
+}
+
+
+.menu-toggle .icon {
+    transition: transform var(--transition-speed) ease;
+}
+
+.menu.open .menu-toggle {
+    background: var(--accent);
+}
+
+.menu.open .menu-toggle .icon {
+    transform: rotate(135deg);
+}
+
+.item button {
+    border: none;
+    background: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+
+    transform: scale(0.9); /* ✅ réduit les boutons sauf le "add" */
+}
+
+.item button:hover {
+    transform: scale(1.1) rotate(-10deg);
+    box-shadow: 0 5px 10px rgba(235, 213, 213, 0.7);
+}
+
+.material-icons {
+    font-size: 1.5em;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+.item.login {
+  background: linear-gradient(135deg, #00b894 0%, #00cec9 100%); /* 💚 Vert connexion */
+}
+
+.item.logout {
+  background: linear-gradient(135deg, #d63031 0%, #e17055 100%); /* ❤️ Rouge déconnexion */
+}
+.item.settings {
+  background: linear-gradient(135deg, #6c5ce7 0%, #341f97 100%); /* 💜 Violet paramètre */
+}
+.rotated {
+  transform: rotate(180deg);
+  transition: transform 0.4s ease;
+}
+.search-container {
+  position: relative;
+  width: 65%;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #555;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.search-input {
+  padding-left: 36px;
+}
+
+.rotated {
+  transform: rotate(180deg);
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+/* === Pastilles de notification === */
+.menu .menu-toggle {
+  position: relative;
+}
+
+.notif-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  min-width: 30px;
+  height: 25px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #e53935;           /* rouge */
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 2px rgba(0,0,0,.2);
+  pointer-events: none; /* clique passe au bouton */
+}
+
+/* Badge sur les items du menu (panier) */
+.menu .menu-items .item button {
+  position: relative;
+}
+
+/* Caché par défaut sur les items; visible quand le menu est ouvert (UX souhaitée) */
+.menu .menu-items .notif-badge {
+  display: none;
+}
+
+.menu.open .menu-items .item.cart .notif-badge {
+  display: flex;
+}
+
+/* Variante plus petite pour l’icône panier */
+.notif-badge.small {
+  top: -6px;
+  right: -6px;
+  min-width: 16px;
+  height: 16px;
+  font-size: 10px;
+  line-height: 16px;
+}
+@media (max-width: 740px) {
+  .searchbar {
+    width: 300px;   /* ✅ match image mobile */
+    height: 55px;   /* ✅ match image mobile */
+    top:3.8rem;
+  }
+      :root {
+    --btn-size: 48px;   /* ou 42px, à tester */
+    --item-scale: 0.75;  /* ✅ items plus petits que le bouton */
+        --ring-scale: 0.8;    /* ✅ 0.6 = 40% plus proche; teste 0.5 / 0.65 selon ton œil */
+    --extra-space: 25px;  /* (optionnel) on réduit aussi le gap brut */
+  }
+  .menu {
+    right: 3.5px;     /* teste 5px, 10px, etc. */
+    top: 27.8px;
+  }
+    .search-container {
+        margin-left: auto;
+  margin-right: auto; /* ✅ le centre dans la barre */
+    width: 90%;   /* ou même 100% */
+  }
+.search-icon {
+  left: 46px; /* au lieu de 12px */
+}
+  .search-input {
+    width: 90%;
+      padding-left: 70px; /* = left de l’icône + ~24px de marge */
+  }
+
+}
+/* ======== < 360px : menu vertical sous le bouton "+" ======== */
+@media (max-width: 360px) {
+  :root {
+     --stack-offset-x: 5px; /* ✅ décale les pastilles vers la droite */
+    --extra-space: 1px;  /* espacement vertical doux */
+    --ring-scale: 0.1;      /* pas utilisé ici mais on le garde neutre */
+  }
+  .searchbar {
+
+  top: 2rem;
+
+}
+
+  /* Optionnel : recentre/décale un poil le + si besoin */
+  .menu {
+         /* ajuste horizontalement si nécessaire */
+    top: 50%;
+    transform: translateY(-50%); /* on laisse le + centré verticalement */
+  }
+
+  /* Reset des positions radiales → base neutre */
+  .menu.open .item {
+    transform: translate(var(--stack-offset-x), 0) rotate(0deg);
+  }
+
+  /* 🧩 Empilement vertical sous le + (1,2,3,4,5…) 
+     Chaque "niveau" = (btn + extra) * N */
+  .menu.open .item.login {
+    transform: translate(var(--stack-offset-x), calc((var(--btn-size) + var(--extra-space)) * 1));
+    transition-delay: 0s;
+  }
+
+  .menu.open .item.logout {
+    transform: translate(var(--stack-offset-x), calc((var(--btn-size) + var(--extra-space)) * 1));
+    transition-delay: 0.05s;
+  }
+
+  /* 👇 ROUAGE (settings) : il suivra pile la pile ici */
+  .menu.open .item.settings {
+    transform: translate(var(--stack-offset-x), calc((var(--btn-size) + var(--extra-space)) * 2));
+    transition-delay: 0.1s;
+  }
+
+  .menu.open .item:nth-child(3) {
+    transform: translate(var(--stack-offset-x), calc((var(--btn-size) + var(--extra-space)) * 3));
+    transition-delay: 0.1s;
+  }
+
+  .menu.open .item:nth-child(4) {
+    transform: translate(var(--stack-offset-x), calc((var(--btn-size) + var(--extra-space)) * 4));
+    transition-delay: 0.15s;
+  }
+
+  .menu.open .item:nth-child(5) {
+    transform: translate(var(--stack-offset-x), calc((var(--btn-size) + var(--extra-space)) * 5));
+    transition-delay: 0.2s;
+  }
+
+  /* (Optionnel) Si ça frôle le bord bas, remonte un peu l’encrier */
+  /* .searchbar { top: 3.6rem; } */
+}
+
+

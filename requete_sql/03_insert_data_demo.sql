@@ -4,6 +4,12 @@ INSERT INTO user (email, `password`, firstName, lastName, role, createdAt) VALUE
 ('admin@example.com', 'hashedpassword1', 'Alice', 'Admin', 'admin', NOW()),
 ('auteur@example.com', 'hashedpassword2', 'Bob', 'Writer', 'author', NOW()),
 ('client@example.com', 'hashedpassword3', 'Charlie', 'Buyer', 'client', NOW());
+INSERT INTO user (email, `password`, firstName, lastName, role, createdAt) VALUES
+('nora.lux@inkred.com', 'norapwd', 'Nora', 'Lux', 'author', NOW()),
+('elias.sable@inkred.com', 'eliaspwd', 'Elias', 'Sable', 'author', NOW()),
+('ayla.mire@inkred.com', 'aylapwd', 'Ayla', 'Mire', 'author', NOW()),
+('leon.therain@inkred.com', 'leonpwd', 'Léon', 'Therain', 'author', NOW()),
+('seraphine.bleu@inkred.com', 'seraphinepwd', 'Séraphine', 'Bleu', 'author', NOW());
 
 -- Données pour livre
 INSERT INTO livre (titre, resume, prix, dateParution, auteurId) VALUES
@@ -30,3 +36,9 @@ INSERT INTO ligne_de_commande (commandeId, produitId, quantite, prixUnitaire) VA
 INSERT INTO comments (contenu, note, dateCommentaire, userId, livreId) VALUES
 ('Excellent ouvrage, très touchant.', 5, NOW(), 3, 1),
 ('J''ai trouvé les poèmes très inspirants.', 4, NOW(), 3, 2);
+
+-- Données pour commande livres
+INSERT INTO ligne_de_commande_livre (commandeId, livreId, quantite, prixUnitaire) VALUES
+(1, 1, 1, 19.99),
+(2, 2, 2, 12.50);
+

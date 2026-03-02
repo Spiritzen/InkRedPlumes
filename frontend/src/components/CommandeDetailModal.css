@@ -1,0 +1,372 @@
+/* Overlay plein écran (ne scrolle PAS) */
+.detail-overlay-modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,.9);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;      /* colle la modale en haut */
+  padding: 2rem 1rem;           /* marge haut/latérale */
+  height: 100dvh;               /* robuste mobile */
+  overflow: hidden;             /* ❗ stop scroll overlay */
+  z-index: 4000;
+}
+
+/* Boîte de modale (seule zone scrollable) */
+.modal-content {
+  background: rgba(31, 31, 31, 0.05);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  color: #fff;
+  padding: 2rem;
+  border-radius: 18px;
+  width: 100%;
+  max-width: 640px;
+
+  /* scroller interne seulement */
+  max-height: calc(100dvh - 4rem);  /* 4rem = padding vertical overlay */
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;          /* évite les sauts à l’apparition du scroll */
+
+  box-shadow: 0 0 20px rgba(255,215,0,.2);
+  animation: fadeIn .3s ease;
+  font-family: "Gabriela", serif;
+  text-align: center;
+   display: flex;
+  flex-direction: column;
+}
+
+.modal-title {
+  font-size: 1.6rem;
+  color: gold;
+  margin-bottom: 1rem;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.commande-attente-text {
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  color: #ddd;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.commande-id {
+  text-align: left;
+  color: #ffd700;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.commande-livre-section {
+  display: flex;
+  flex-wrap: wrap; /* ✅ autorise le retour à la ligne */
+  gap: 1.2rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.modal-content .commande-livre-img {
+  width: 96px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.livre-infos {
+  flex: 1 1 250px; /* ✅ s’étire, mais peut aussi passer sous l'image si besoin */
+  min-width: 200px; /* ✅ largeur minimale utile pour forcer le wrap */
+}
+
+.livre-infos h2 {
+  text-align: left;
+  font-size: 1rem;
+  font-weight: bold;  
+  margin-bottom: 0.4rem;
+  color: #ffd700;
+}
+
+
+.fiche-resume {
+  font-style: italic;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+
+.modal-price-block {
+  display: flex;
+  flex-wrap: wrap; /* ✅ permet le retour à la ligne si l'espace est trop petit */
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+  color: #eee;
+  text-align: left;
+}
+.modal-price-block strong {
+  color: #ffd700;
+}
+
+.auteur-info {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  color: #ccc;
+
+  display: flex;
+  flex-wrap: wrap;         /* ✅ permet le retour à la ligne en responsive */
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.modal-buttons button {
+  flex: 1;
+  min-width: 30%;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn-secondary1,
+.btn-pay,
+.btn-delete,
+.exit-btn {
+    height: 50px; /* ou 48px selon ton design global */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  border: none;
+  padding: 0.3rem 0.8rem impot !important;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: "Gabriela", serif;
+  font-size: 0.1rem;
+  transition: transform 0.2s ease;
+
+}
+
+.btn-secondary1 {
+  background: linear-gradient(to right, #888, #aaa);
+  color: rgb(0, 0, 0);
+}
+
+.btn-secondary1:hover {
+  color:white;
+  background: linear-gradient(to right, #999, #ccc);
+  transform: scale(1.05);
+}
+
+.btn-pay {
+  background: linear-gradient(to right, #f1c40f, #f39c12);
+  color: black;
+}
+
+.btn-pay:hover {
+  background: linear-gradient(to right, #f39c12, #e67e22);
+  color: white;
+  transform: scale(1.05);
+}
+
+.btn-delete {
+  background: linear-gradient(to right, #d63031, #e17055);
+  color: rgb(0, 0, 0);
+}
+
+.btn-delete:hover {
+  color: white;
+  background: linear-gradient(to right, #e74c3c, #ff7675);
+  transform: scale(1.05);
+}
+
+.livre-header-row {
+  display: flex;
+    flex-wrap: wrap;  
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.4rem;
+}
+.note-right {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;           /* ✅ garde la taille fixe des étoiles */
+  margin-left: auto;        /* pousse à droite si possible */
+}
+
+.titre-livre-align {
+  color: #ffd700;
+  font-size: 1.2rem;
+  margin: 0;
+  padding: 0;
+    flex-shrink: 1;          /* ✅ pour éviter que le titre soit écrasé */
+  word-break: break-word; /* ✅ pour couper les mots longs si besoin */
+}
+/* === Modale de confirmation (superposée à la modale de détail) === */
+
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);     /* assombrir l’arrière-plan */
+  display: grid;
+  place-items: center;              /* centrer la boîte */
+  z-index: 5000;                    /* > detail-overlay-modal (1000) */
+  padding: 1.5rem;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.confirm-box {
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #fff;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 0 28px rgba(255,215,0,0.18);
+  font-family: "Gabriela", serif;
+  text-align: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.confirm-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+}
+
+.confirm-message {
+  margin: 0 0 1rem;
+  line-height: 1.5;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .75rem;                      /* même ligne, espacés */
+  margin-top: .5rem;
+}
+
+/* Option: rendre les boutons un peu plus "importants" ici */
+.confirm-actions .btn-delete,
+.confirm-actions .btn-secondary1 {
+  min-width: 140px;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  font-size: 1em;
+}
+.contact-seller {
+  margin: 0.5rem 0 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: linear-gradient(to right, #3b82f6, #2563eb); /* bleu */
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform .2s ease, filter .2s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}/* === Fix layout des boutons d'action dans les modales de commandes === */
+/* On cible UNIQUEMENT les modales de CommandeDetailModal pour éviter tout conflit */
+.detail-overlay-modal .modal-content .modal-buttons {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;              /* wrap en mobile au besoin */
+}
+
+/* Empêche l'étirement 100% + min-width hérités d'ailleurs */
+.detail-overlay-modal .modal-content .modal-buttons > .btn-secondary1,
+.detail-overlay-modal .modal-content .modal-buttons > .btn-pay,
+.detail-overlay-modal .modal-content .modal-buttons > .btn-delete {
+  flex: 0 0 auto !important;
+  min-width: unset !important;
+  height: 44px;
+  padding: 0.6rem 1rem;
+}
+
+/* Si tu as un style global qui forçait ceci, on le neutralise ici */
+.detail-overlay-modal .modal-content .modal-buttons > button {
+  flex: 0 0 auto !important;
+  min-width: unset !important;
+}
+
+/* Optionnel: compacité sur petits écrans */
+@media (max-width: 480px) {
+  .detail-overlay-modal .modal-content .modal-buttons > button {
+    min-width: 120px !important;
+    height: 40px;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 1.2rem;
+    max-width: 90vw;
+    font-size: 0.9rem;
+  }
+
+  .commande-livre-img {
+    width: 120px;
+  }
+
+  .modal-title {
+    font-size: 1.3rem;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+    .commande-livre-section {
+    flex-direction: column; /* ✅ pour forcer le passage en colonne en mobile */
+  }
+
+  .livre-infos {
+    width: 100%;
+  }
+
+  .commande-livre-img {
+    margin: 0 auto; /* pour centrer l’image si tu veux en mobile */
+  }
+    .modal-price-block {
+    font-size: 1rem;
+  }
+  .auteur-info p {
+  margin: 0;
+  flex: 1 1 200px;
+}
+}

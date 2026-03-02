@@ -50,14 +50,14 @@ RedInkPlums/
   - Base de données relationnelle complète
   - Vues, procédures, triggers, index, tests unitaires SQL
 
-- 🔄 **Sprint 3 (en cours)** :
+- 🔄 **Sprint 3 terminés** :
   - Début du backend Java
   - Préparation du frontend React
 
-- 🚀 **À venir** :
+- 🚀 **Sprint 4 terminés** :
   - Connexion frontend/backend
   - Authentification JWT
-  - Mise en ligne sur LWS
+  
 
 ---
 
@@ -70,7 +70,7 @@ RedInkPlums/
 
 ## 👤 Auteur
 
-**Seb Cantrelle** – Étudiant CDA à l’AFCI  
+**Seb Cantrelle** 
 _Assistance technique, structuration & documentation par ChatGPT_
 
 ---

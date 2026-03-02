@@ -1,0 +1,31 @@
+
+
+.commande-table-wrapper th,
+.commande-table-wrapper td {
+  padding: 10px 14px;
+  text-align: center;
+  border: 1px solid #ccc;
+  
+}
+.btn-statut{
+     display: flex;
+      flex-Wrap: wrap;
+       justify-Content: center;
+        gap: 10px;
+         margin-Bottom: "20px";
+          font-family: "Gabriela", serif;
+  font-size: 0.9rem;
+}
+
+
+
+/* Marge pour le bouton "Fermer" de la modale achats perso */
+.profil-modal-box .btn-secondary {
+  margin-top: 20px;
+}
+@media screen and (max-width: 600px) {
+     th,td{
+    font-size:1.5em;
+}
+
+}

@@ -1,0 +1,21 @@
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Backend
+backend/target/
+
+# Uploads (optionnel selon stratégie)
+uploads/
+
+# IDE
+.vscode/
+.idea/
+.metadata/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+*.env

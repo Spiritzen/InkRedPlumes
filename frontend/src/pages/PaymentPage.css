@@ -1,0 +1,278 @@
+/* PaymentPage.css */
+
+/* 🔮 Elf background + parallax (position updated by JS) */
+.pay-page {
+  min-height: 100vh;
+  font-family: "Gabriela", serif;
+  color: #fff;
+  background-color: #111;
+  background-image: url('/images/filigrane_elfique7.png');
+  background-repeat: repeat;
+  background-size: 1300px auto;
+  background-position: center 0px;
+  transition: background-position 0.05s ease-out;
+
+  /* Offset under fixed navbar (desktop) */
+  padding-top: 220px ;
+  padding-bottom: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Main card */
+.pay-card {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: #fff;
+  width: 100%;
+  max-width: 860px;
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.18);
+}
+
+/* Titles */
+.pay-title {
+  margin: 0;
+  font-size: 2rem;
+  text-align: center;
+}
+.pay-subtitle {
+  text-align: center;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  opacity: 0.9;
+}
+
+/* 🧾 Recap: image left / info right */
+.pay-recap {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1.25rem 0 1.75rem 0;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 14px;
+  box-shadow: 0 0 12px rgba(255, 221, 27, 0.12) inset;
+}
+
+.pay-recap-img img {
+  width: 170px;
+  height: 215px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+
+.pay-recap-info {
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.pay-recap-title {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.2rem;
+}
+.pay-recap-lines .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.25rem 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.15);
+}
+.pay-recap-lines .row:last-child {
+  border-bottom: none;
+}
+.pay-recap-lines .row.total {
+  font-weight: 700;
+}
+
+/* Tabs */
+.pay-tabs {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0.5rem 0 1rem 0;
+}
+.pay-tab {
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .12s ease, background .12s ease, box-shadow .12s ease;
+}
+.pay-tab:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+.pay-tab.active {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: rgba(255, 215, 0, 0.45);
+}
+
+/* Form */
+.pay-form {
+  margin-top: 0.5rem;
+}
+.pay-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.pay-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pay-field.small input {
+  max-width: 180px;
+}
+.pay-field label {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+.pay-field input {
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  padding: 0.6rem 0.75rem;
+  outline: none;
+}
+.pay-field input::placeholder { color: rgba(255,255,255,0.45); }
+.pay-error {
+  color: #ff8f8f;
+  font-size: 0.85rem;
+}
+
+/* Actions */
+.pay-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 1rem;
+}
+.btn-pay {
+  background: linear-gradient(180deg, #ffd700, #b8860b);
+  color: #111;
+  border: none;
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  font-size: 1em;
+}
+.btn-secondary {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+
+/* Processing modal */
+.pay-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: grid;
+  place-items: center;
+  z-index: 1400;
+}
+.pay-modal {
+  width: min(540px, 92vw);
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 0 18px rgba(255,215,0,0.18);
+}
+.pay-modal-title { margin: 0.75rem 0 0.25rem 0; }
+.pay-modal-sub { opacity: 0.85; margin: 0; }
+.loader-ring {
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  border: 4px solid rgba(255,255,255,0.2);
+  border-top-color: #ffd700;
+  margin: 0 auto;
+  animation: spin 0.9s linear infinite;
+}
+/* ✅ Modale de résultat (succès / échec) */
+.pay-result-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1100; /* au-dessus du processing modal */
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(2px);
+}
+
+.pay-result-box {
+  width: min(560px, 92vw);
+  background: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 0 22px rgba(255, 215, 0, 0.16);
+  padding: 1.75rem 1.5rem;
+  text-align: center;
+  font-family: "Gabriela", serif;
+}
+
+.pay-result-icon {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+  user-select: none;
+}
+.pay-result-icon.ok { text-shadow: 0 0 12px rgba(60, 255, 150, 0.35); }
+.pay-result-icon.ko { text-shadow: 0 0 12px rgba(255, 80, 80, 0.35); }
+
+.pay-result-title {
+  font-size: 1.4rem;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.pay-result-msg {
+  margin: 0 0 1rem;
+  opacity: 0.9;
+}
+
+.pay-result-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Optionnel: assure une cohérence de boutons si utilisés ici */
+.pay-result-actions .btn-pay,
+.pay-result-actions .btn-secondary {
+  min-width: 120px;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Responsive offsets */
+@media (max-width: 1024px) {
+  .pay-page { padding-top: 160px; }
+  .pay-grid { grid-template-columns: 1fr; }
+  .pay-field.small input { max-width: 100%; }
+}
+@media (max-width: 640px) {
+  .pay-page { padding-top: 160px; }
+  .pay-recap-img img { width: 140px; height: 180px; }
+  .pay-card { padding: 1.25rem; }
+}

@@ -1,0 +1,146 @@
+.profil-container {
+  
+   background-color: #111; /* fond de base */
+  background-image: url('/images/filigrane_elfique7.png');
+  background-repeat: repeat;
+  background-size: 1300px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Gabriela", serif;
+  font-style: normal;
+  color: rgb(206, 206, 206);
+  padding-top: 1rem;
+    padding-bottom: 4rem; /* Ajoute un espace avant le footer */
+}
+
+.header-spacer {
+  height: 160px;
+  width: 100%;
+}
+
+.profil-title {
+  margin-bottom: 3rem;
+  font-size: 1.8rem;
+  color: rgb(206, 206, 206);
+  text-decoration: underline;
+  text-align: center;
+}
+.profil-grid-wrapper {
+  width: 100%;
+  
+  padding: 0 2rem; /* Padding horizontal */
+  box-sizing: border-box;
+}
+
+.profil-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto; /* ✅ Centre la grille */
+}
+
+.profil-card {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.profil-card:hover {
+  background: rgba(32, 28, 0, 0.1);
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+}
+
+.profil-card .material-icons {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: gold;
+}
+
+.profil-card p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: normal;
+}
+.btn-ajout {
+  background: linear-gradient(to right, #4CAF50, #81C784); /* vert doux */
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-family: "Gabriela", serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-ajout:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.4); /* effet doré */
+  background: linear-gradient(to right, #66bb6a, #a5d6a7);
+}
+
+/* bouton fermer */
+.confirmation-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.btn-secondary {
+  background-color: #999;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 0.6em 1.2em;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: #adadad;
+}
+/* --- Pastille pour la carte "Mes commandes" --- */
+.profil-card {
+  position: relative; /* nécessaire pour placer la pastille */
+}
+
+.profil-card .notif-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #e53935;   /* rouge */
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 2px rgba(0,0,0,.15);
+  z-index: 2;
+}
+
+@media (max-width: 500px) {
+.profil-title {
+  margin-bottom: 3rem;
+  font-size: 1.5rem;
+  color: rgb(206, 206, 206);
+  text-decoration: underline;
+  text-align: center;
+}
+}
